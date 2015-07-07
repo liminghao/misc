@@ -1,0 +1,28 @@
+#!/bin/sh
+
+cmd=$(which tmux)
+session="dev"
+
+if [ -z $cmd ];then
+	echo "You need to install tmux"
+	exit 1
+fi
+
+$cmd has -t $session 2> /dev/null
+
+if [ $? != 0 ];then
+	$cmd new -d -n dev1 -s $session "ssh liminghao@10.6.17.69"
+	$cmd splitw -h -t $session:0 "ssh liminghao@10.6.17.69"
+	
+         $cmd neww -n namenode -t $session "ssh ttyc@10.10.109.129"
+         $cmd splitw -h -t $session:1 "ssh ttyc@10.10.109.129"
+
+
+
+	$cmd selectw -t $session:0
+fi
+
+$cmd att -t $session
+
+exit 0
+

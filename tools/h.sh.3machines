@@ -1,0 +1,38 @@
+#!/bin/sh
+
+cmd=$(which tmux)
+session="hadoop0"
+
+if [ -z $cmd ];then
+	echo "You need to install tmux"
+	exit 1
+fi
+
+$cmd has -t $session 2> /dev/null
+
+if [ $? != 0 ];then
+	$cmd new -d -n hadoops0 -s $session "ssh ttyc@10.10.99.143"
+	$cmd splitw -h -p 66 -t $session:0 "ssh ttyc@10.10.107.237"
+	$cmd splitw -h -t $session:0 "ssh ttyc@10.10.98.101"
+
+	$cmd neww -n hadoops1 -t $session "ssh ttyc@10.10.99.143"
+	$cmd splitw -h -p 66 -t $session:1 "ssh ttyc@10.10.107.237"
+	$cmd splitw -h -t $session:1 "ssh ttyc@10.10.98.101"
+	
+	$cmd neww -n all -t $session "bash"
+	$cmd splitw -h -t $session:2 "ssh ttyc@10.10.99.143"
+	$cmd splitw -v -t $session:2 "ssh ttyc@10.10.98.101"
+	$cmd splitw -v -t $session:2.0 "ssh ttyc@10.10.107.237"
+	
+	$cmd neww -n h0 -t $session "ssh ttyc@10.10.99.143"
+	$cmd neww -n h1 -t $session "ssh ttyc@10.10.107.237"
+	$cmd neww -n h2 -t $session "ssh ttyc@10.10.98.101"
+	$cmd neww -n jump -t $session "bash"
+
+	$cmd selectw -t $session:0
+fi
+
+$cmd att -t $session
+
+exit 0
+
