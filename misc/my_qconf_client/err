@@ -1,0 +1,9 @@
+2015-07-21 20:48:30,008:30804(0x7fcf37926720):ZOO_INFO@log_env@712: Client environment:zookeeper.version=zookeeper C client 3.4.6
+2015-07-21 20:48:30,008:30804(0x7fcf37926720):ZOO_INFO@log_env@716: Client environment:host.name=10-6-17-69
+2015-07-21 20:48:30,008:30804(0x7fcf37926720):ZOO_INFO@log_env@723: Client environment:os.name=Linux
+2015-07-21 20:48:30,008:30804(0x7fcf37926720):ZOO_INFO@log_env@724: Client environment:os.arch=2.6.32-431.11.7.el6.ucloud.x86_64
+2015-07-21 20:48:30,008:30804(0x7fcf37926720):ZOO_INFO@log_env@725: Client environment:os.version=#1 SMP Wed Jan 7 23:42:27 CST 2015
+2015-07-21 20:48:30,008:30804(0x7fcf37926720):ZOO_INFO@log_env@733: Client environment:user.name=liminghao
+2015-07-21 20:48:30,008:30804(0x7fcf37926720):ZOO_INFO@log_env@741: Client environment:user.home=/home/liminghao
+2015-07-21 20:48:30,008:30804(0x7fcf37926720):ZOO_INFO@log_env@753: Client environment:user.dir=/home/liminghao/source_code/QConf/manager/build/qconf_zk/my_qconf_client
+2015-07-21 20:48:30,008:30804(0x7fcf37926720):ZOO_INFO@zookeeper_init@786: Initiating client connection, host=10.10.101.94:2181 sessionTimeout=30000 watcher=(nil) sessionId=0 sessionPasswd=<null> context=(nil) flags=0

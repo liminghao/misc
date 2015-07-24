@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <string>
+#include <map>
+
+#include "qconf_zk.h"
+
+int main(int argc, char **argv)
+{
+	std::string host = "10.10.101.94:2181";
+
+	QConfZK qconfZk;
+	if(QCONF_OK == qconfZk.zk_init(host))
+	{
+		printf("QCONF_OK \n");
+	}
+
+
+	std::map<std::string, char> servs;
+	servs.insert(std::map<std::string, char>::value_type("10.10.112.240:19000",
+				STATUS_UP));
+	servs.insert(std::map<std::string, char>::value_type("10.10.110.38:19000",
+				STATUS_UP));
+	servs.insert(std::map<std::string, char>::value_type("10.10.104.21:19000",
+				STATUS_UP));
+	if (QCONF_OK != qconfZk.zk_services_set("/qconf_root/test", servs)) {
+		
+	}
+
+//	if (QCONF_OK != qconfZk.zk_service_up("/qconf_root/test", "1.1.1.2:80"))
+//	{
+		//Failed
+//	}
+
+	return 0;
+}
